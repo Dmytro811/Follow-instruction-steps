@@ -4,13 +4,10 @@ import Footer from './components/layout/Footer'
 import HomePage from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
 import PricingPage from './pages/PricingPage'
-import DashboardPage from './pages/DashboardPage'
-import ReportPage from './pages/ReportPage'
 import CaseStudiesPage from './pages/CaseStudiesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import FAQPage from './pages/FAQPage'
-import RegisterPage from './pages/RegisterPage'
 import PaymentPage from './pages/PaymentPage'
 import PaymentSuccessPage from './pages/PaymentSuccessPage'
 
@@ -20,15 +17,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
-    </>
-  )
-}
-
-function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-[#f8fafc]">{children}</main>
     </>
   )
 }
@@ -43,11 +31,8 @@ export default function App() {
       <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
       <Route path="/faq" element={<Layout><FAQPage /></Layout>} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/payment-success" element={<PaymentSuccessPage />} />
-      <Route path="/dashboard" element={<DashboardLayout><DashboardPage /></DashboardLayout>} />
-      <Route path="/report/:id" element={<DashboardLayout><ReportPage /></DashboardLayout>} />
     </Routes>
   )
 }

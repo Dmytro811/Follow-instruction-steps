@@ -73,12 +73,6 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <LanguageSwitcher isDark={isDark} />
-          <Link
-            to="/dashboard"
-            className={`text-sm font-medium transition-colors ${isDark ? 'text-white/80 hover:text-white' : 'text-[#475569] hover:text-[#0f3460]'}`}
-          >
-            {t(translations.nav.signIn)}
-          </Link>
           <Link to="/pricing">
             <Button size="sm" variant={isDark ? 'accent' : 'primary'}>
               {t(translations.nav.analyzeWebsite)}
