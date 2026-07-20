@@ -1,5 +1,12 @@
 import { Star } from 'lucide-react'
 
+// ЗАМІНІТЬ ВІДГУКИ НА РЕАЛЬНІ ВІД ВАШИХ КЛІЄНТІВ:
+// name - ім'я клієнта
+// role - посада клієнта
+// company - назва компанії клієнта
+// content - текст відгуку (що саме допоміг ваш сервіс, які результати отримали)
+// rating - оцінка від 1 до 5
+// avatar - ініціали (або можна додати photo: 'шлях/до/фото.jpg')
 const testimonials = [
   {
     name: 'Sarah Chen',
@@ -28,33 +35,7 @@ const testimonials = [
     rating: 5,
     avatar: 'EK',
   },
-  {
-    name: 'James Thornton',
-    role: 'VP Marketing',
-    company: 'Stackware',
-    content:
-      "Our AI Visibility Score went from 38 to 79 in 6 weeks. The optimization package built us a completely restructured homepage. Claude and Gemini now recommend us for dev tools.",
-    rating: 5,
-    avatar: 'JT',
-  },
-  {
-    name: 'Aisha Rahman',
-    role: 'Digital Marketing Lead',
-    company: 'Circe Commerce',
-    content:
-      "We were invisible to AI assistants even though we ranked well on Google. After the analysis, we understood why and fixed it. The schema and entity work made a huge difference.",
-    rating: 5,
-    avatar: 'AR',
-  },
-  {
-    name: 'Tom Beckett',
-    role: 'CTO',
-    company: 'Prism Analytics',
-    content:
-      "I expected a generic SEO report. Instead I got a deeply technical AI-specific analysis that showed exactly which structured data and semantic signals were missing.",
-    rating: 5,
-    avatar: 'TB',
-  },
+  // ДОДАЙТЕ БІЛЬШЕ ВІДГУКІВ ТУТ
 ]
 
 export default function Testimonials() {

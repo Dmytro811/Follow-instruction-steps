@@ -1,26 +1,28 @@
 import { Link } from 'react-router-dom'
-import { Zap, Mail, Globe, BookOpen, MessageCircle } from 'lucide-react'
-
-const links = {
-  Product: [
-    { label: 'Services', href: '/services' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'Blog', href: '/blog' },
-  ],
-  Company: [
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'FAQ', href: '/faq' },
-  ],
-  Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-    { label: 'Cookie Policy', href: '#' },
-  ],
-}
+import { Zap } from 'lucide-react'
+import { useLanguage } from '../../context/LanguageContext'
+import { translations } from '../../locales/translations'
 
 export default function Footer() {
+  const { t } = useLanguage()
+
+  const links = {
+    [t(translations.footer.product)]: [
+      { label: t(translations.nav.services), href: '/services' },
+      { label: t(translations.nav.pricing), href: '/pricing' },
+      { label: t(translations.nav.caseStudies), href: '/case-studies' },
+    ],
+    [t(translations.footer.company)]: [
+      { label: t(translations.nav.about), href: '/about' },
+      { label: t(translations.nav.contact), href: '/contact' },
+      { label: t(translations.nav.faq), href: '/faq' },
+    ],
+    [t(translations.footer.legal)]: [
+      { label: t(translations.footer.privacyPolicy), href: '#' },
+      { label: t(translations.footer.termsOfService), href: '#' },
+      { label: t(translations.footer.cookiePolicy), href: '#' },
+    ],
+  }
   return (
     <footer className="bg-[#0a1628] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
@@ -36,20 +38,11 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs mb-6">
-              The AI Visibility Platform helping businesses get recommended by ChatGPT, Claude, Gemini, and every major AI assistant.
+              {t(translations.footer.description)}
             </p>
-            <div className="flex gap-3">
-              {[Globe, BookOpen, MessageCircle, Mail].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
-                  aria-label="Social link"
-                >
-                  <Icon size={14} className="text-white/60" />
-                </a>
-              ))}
-            </div>
+            {/* ВСТАВТЕ СЮДИ ПОСИЛАННЯ НА ВАШІ СОЦІАЛЬНІ МЕРЕЖІ */}
+            {/* Замініть '#' на реальні посилання: Instagram, Facebook, LinkedIn, Twitter */}
+            
           </div>
 
           {/* Links */}
@@ -76,7 +69,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between gap-4">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} SEO AI. All rights reserved.
+            © {new Date().getFullYear()} SEO AI. {t(translations.footer.allRightsReserved)}.
           </p>
           <p className="text-xs text-white/40">
             AI Visibility Platform · Generative Engine Optimization · LLM Optimization

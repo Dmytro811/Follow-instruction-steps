@@ -1,5 +1,14 @@
 import { TrendingUp } from 'lucide-react'
 
+// ЗАМІНІТЬ КЕЙСИ НА РЕАЛЬНІ ПРОЕКТИ:
+// company - назва компанії клієнта
+// industry - індустрія/сфера діяльності
+// logo - логотип (ініціали або можна додати logoImage: 'шлях/до/лого.png')
+// challenge - опис проблеми, з якою звернувся клієнт
+// solution - що ви зробили для вирішення проблеми
+// before - показник "до" (наприклад, score, продажі, трафік)
+// after - показник "після" роботи з вами
+// metrics - детальні метрики результатів (label - назва метрики, before - значення до, after - значення після, unit - одиниці виміру)
 const cases = [
   {
     company: 'Dataflow.io',
@@ -15,34 +24,21 @@ const cases = [
       { label: 'ChatGPT mentions/week', before: '0', after: '12', unit: '' },
     ],
   },
-  {
-    company: 'Meridian Agency',
-    industry: 'Digital Marketing Agency',
-    logo: 'MA',
-    challenge: 'Meridian was losing clients who found competitors through AI assistants. When prospects asked Gemini or Claude for marketing agency recommendations, Meridian never appeared.',
-    solution: 'Rebuilt service pages with clear entity definitions, implemented LocalBusiness and Agency schema, added case study structured data, and created an AI-readable services architecture.',
-    before: 51,
-    after: 89,
-    metrics: [
-      { label: 'AI Visibility Score', before: '51', after: '89', unit: '/100' },
-      { label: 'New client inquiries from AI', before: '1/mo', after: '9/mo', unit: '' },
-      { label: 'Perplexity citations', before: '0', after: '7/week', unit: '' },
-    ],
-  },
-  {
-    company: 'Circe Commerce',
-    industry: 'E-commerce / DTC Skincare',
-    logo: 'CC',
-    challenge: 'When shoppers asked AI assistants to recommend skincare products, Circe Commerce was never mentioned despite strong brand recognition in traditional search.',
-    solution: 'Implemented Product and Review schema across all product pages, added ingredient entity optimization, structured ingredient benefit content as AI-readable Q&A pairs.',
-    before: 28,
-    after: 74,
-    metrics: [
-      { label: 'AI Visibility Score', before: '28', after: '74', unit: '/100' },
-      { label: 'AI-driven product mentions', before: '2/mo', after: '31/mo', unit: '' },
-      { label: 'Revenue from AI channel', before: '$0', after: '$12,400/mo', unit: '' },
-    ],
-  },
+  // ДОДАЙТЕ БІЛЬШЕ КЕЙСІВ ТУТ
+  // Приклад структури:
+  // {
+  //   company: 'Назва компанії',
+  //   industry: 'Індустрія',
+  //   logo: 'НК',
+  //   challenge: 'Опис проблеми клієнта...',
+  //   solution: 'Опис вашого рішення...',
+  //   before: 30,
+  //   after: 85,
+  //   metrics: [
+  //     { label: 'Метрика 1', before: '10', after: '50', unit: '/100' },
+  //     { label: 'Метрика 2', before: '5/mo', after: '25/mo', unit: '' },
+  //   ],
+  // },
 ]
 
 export default function CaseStudiesPage() {

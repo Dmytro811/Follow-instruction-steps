@@ -7,10 +7,12 @@ import PricingPage from './pages/PricingPage'
 import DashboardPage from './pages/DashboardPage'
 import ReportPage from './pages/ReportPage'
 import CaseStudiesPage from './pages/CaseStudiesPage'
-import BlogPage from './pages/BlogPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import FAQPage from './pages/FAQPage'
+import RegisterPage from './pages/RegisterPage'
+import PaymentPage from './pages/PaymentPage'
+import PaymentSuccessPage from './pages/PaymentSuccessPage'
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,10 +40,12 @@ export default function App() {
       <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
       <Route path="/pricing" element={<Layout><PricingPage /></Layout>} />
       <Route path="/case-studies" element={<Layout><CaseStudiesPage /></Layout>} />
-      <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
       <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
       <Route path="/faq" element={<Layout><FAQPage /></Layout>} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/payment" element={<PaymentPage />} />
+      <Route path="/payment-success" element={<PaymentSuccessPage />} />
       <Route path="/dashboard" element={<DashboardLayout><DashboardPage /></DashboardLayout>} />
       <Route path="/report/:id" element={<DashboardLayout><ReportPage /></DashboardLayout>} />
     </Routes>

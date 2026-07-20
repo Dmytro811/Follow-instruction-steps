@@ -1,8 +1,23 @@
 import { Brain, Shield, Zap, Globe, Target, Users } from 'lucide-react'
 
+// ВСТАВТЕ ІНФОРМАЦІЮ ПРО ВАШУ КОМАНДУ:
+// name - ім'я члена команди
+// role - посада
+// bio - короткий опис досвіду та експертизи
+// photo - шлях до фото (додайте фото у папку src/assets/team/ і вкажіть шлях, наприклад: '/assets/team/artem.jpg')
 const team = [
-  { name: 'Artem Polylyk', role: 'Co-founder & CEO', bio: 'Former Head of SEO at HubSpot. 12 years in search optimization, early researcher in LLM citation behavior.' },
-  { name: 'Dmytro Nazaruk', role: 'Co-founder & Chief AI Officer', bio: 'PhD in NLP from Stanford. Led AI ranking research at a major search engine. Built our AI analysis engine.' },
+  {
+    name: 'Artem Polylyk',
+    role: 'Co-founder & CEO',
+    bio: 'Former Head of SEO at HubSpot. 12 years in search optimization, early researcher in LLM citation behavior.',
+    photo: '' // ДОДАЙТЕ ШЛЯХ ДО ФОТО
+  },
+  {
+    name: 'Dmytro Nazaruk',
+    role: 'Co-founder & Chief AI Officer',
+    bio: 'PhD in NLP from Stanford. Led AI ranking research at a major search engine. Built our AI analysis engine.',
+    photo: '' // ДОДАЙТЕ ШЛЯХ ДО ФОТО
+  },
 ]
 
 const values = [
@@ -29,11 +44,14 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
+      {/* ЗМІНІТЬ ОПИС КОМПАНІЇ ТУТ: */}
+      {/* Відредагуйте текст у секціях "Our Mission" та "How AI Search Works" відповідно до вашого бізнесу */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-bold text-[#0a1628] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Our Mission</h2>
+              {/* ВІДРЕДАГУЙТЕ ТЕКСТ МІСІЇ КОМПАНІЇ */}
               <p className="text-[#475569] leading-relaxed mb-4">
                 To give every business — from solo founders to enterprise teams — the tools to understand and improve their visibility in the AI-powered information ecosystem.
               </p>
@@ -43,6 +61,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="text-3xl font-bold text-[#0a1628] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>How AI Search Works</h2>
+              {/* ВІДРЕДАГУЙТЕ ОПИС ВАШОГО СЕРВІСУ/ПРОДУКТУ */}
               <p className="text-[#475569] leading-relaxed mb-4">
                 When a user asks ChatGPT or Gemini for a recommendation, the model draws on its training data, retrieval-augmented generation, and real-time web search to decide which sources to cite.
               </p>
@@ -80,17 +99,23 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-[#0a1628] text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
             The Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map(member => (
-              <div key={member.name} className="flex gap-4 p-5 border border-[#e2e8f0] rounded-xl">
-                <div className="w-12 h-12 bg-[#0f3460] rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <div className="font-bold text-[#0a1628]" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</div>
-                  <div className="text-xs text-[#10b981] font-semibold mb-2">{member.role}</div>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{member.bio}</p>
-                </div>
+              <div key={member.name} className="flex flex-col items-center text-center p-6 border border-[#e2e8f0] rounded-xl bg-white hover:shadow-lg transition-shadow">
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-[#e2e8f0]"
+                  />
+                ) : (
+                  <div className="w-24 h-24 bg-[#0f3460] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                )}
+                <div className="font-bold text-[#0a1628] text-lg mb-1" style={{ fontFamily: 'var(--font-heading)' }}>{member.name}</div>
+                <div className="text-xs text-[#10b981] font-semibold mb-3">{member.role}</div>
+                <p className="text-sm text-[#64748b] leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>

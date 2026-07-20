@@ -251,12 +251,158 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {activeTab !== 'overview' && activeTab !== 'reports' && (
+        {activeTab === 'billing' && (
+          <div>
+            <h1 className="text-2xl font-bold text-[#0a1628] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+              Білінг
+            </h1>
+            <div className="space-y-6">
+              {/* Current Plan */}
+              <div className="bg-white border border-[#e2e8f0] rounded-xl p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h2 className="font-bold text-[#0a1628] mb-1">Поточний план</h2>
+                    <p className="text-sm text-[#64748b]">Professional Multi-AI</p>
+                  </div>
+                  <Badge variant="success">Активний</Badge>
+                </div>
+                <div className="text-3xl font-bold text-[#0a1628] mb-4">$149<span className="text-sm font-normal text-[#94a3b8]">/місяць</span></div>
+                <div className="flex gap-3">
+                  <Link to="/pricing">
+                    <Button size="sm" variant="outline">Змінити план</Button>
+                  </Link>
+                  <Button size="sm" variant="outline">Скасувати підписку</Button>
+                </div>
+              </div>
+
+              {/* Payment Method */}
+              <div className="bg-white border border-[#e2e8f0] rounded-xl p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="font-bold text-[#0a1628]">Спосіб оплати</h2>
+                  <Link to="/payment">
+                    <Button size="sm" variant="outline">Додати картку</Button>
+                  </Link>
+                </div>
+                <div className="flex items-center gap-4 p-4 border border-[#e2e8f0] rounded-lg">
+                  <CreditCard size={24} className="text-[#0f3460]" />
+                  <div className="flex-1">
+                    <div className="font-medium text-[#0a1628]">•••• •••• •••• 4242</div>
+                    <div className="text-xs text-[#94a3b8]">Термін дії 12/27</div>
+                  </div>
+                  <button className="text-sm text-red-500 hover:text-red-600">Видалити</button>
+                </div>
+              </div>
+
+              {/* Billing History */}
+              <div className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden">
+                <div className="p-6 border-b border-[#e2e8f0]">
+                  <h2 className="font-bold text-[#0a1628]">Історія платежів</h2>
+                </div>
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[#e2e8f0] bg-[#f8fafc]">
+                      {['Дата', 'Опис', 'Сума', 'Статус', ''].map(h => (
+                        <th key={h} className="text-left px-6 py-3 text-xs font-semibold text-[#94a3b8] uppercase">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { date: 'Jul 1, 2026', desc: 'Professional Plan', amount: '$149.00', status: 'paid' },
+                      { date: 'Jun 1, 2026', desc: 'Professional Plan', amount: '$149.00', status: 'paid' },
+                      { date: 'May 1, 2026', desc: 'Professional Plan', amount: '$149.00', status: 'paid' },
+                    ].map((invoice, i) => (
+                      <tr key={i} className="border-b border-[#f1f5f9] last:border-0 hover:bg-[#f8fafc]">
+                        <td className="px-6 py-4 text-[#64748b]">{invoice.date}</td>
+                        <td className="px-6 py-4 text-[#0a1628]">{invoice.desc}</td>
+                        <td className="px-6 py-4 font-medium text-[#0a1628]">{invoice.amount}</td>
+                        <td className="px-6 py-4">
+                          <Badge variant="success">Оплачено</Badge>
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <button className="p-1.5 hover:bg-[#e8f0fb] rounded text-[#64748b] hover:text-[#0f3460]">
+                            <Download size={14} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'analytics' && (
+          <div>
+            <h1 className="text-2xl font-bold text-[#0a1628] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+              Аналітика
+            </h1>
+            <div className="space-y-6">
+              {/* Score Trend */}
+              <div className="bg-white border border-[#e2e8f0] rounded-xl p-6">
+                <h2 className="font-bold text-[#0a1628] mb-4">Динаміка AI Visibility Score</h2>
+                <div className="h-64 flex items-end justify-between gap-2">
+                  {[34, 45, 52, 67, 72, 82].map((score, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-2">
+                      <div
+                        className="w-full bg-[#10b981] rounded-t"
+                        style={{ height: `${(score / 100) * 100}%` }}
+                      />
+                      <div className="text-xs text-[#94a3b8]">{['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][i]}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Detailed Metrics */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {scoreCategories.map(cat => (
+                  <div key={cat.label} className="bg-white border border-[#e2e8f0] rounded-xl p-5">
+                    <ProgressBar label={cat.label} value={cat.score} height={6} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'notifications' && (
+          <div>
+            <h1 className="text-2xl font-bold text-[#0a1628] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+              Сповіщення
+            </h1>
+            <div className="bg-white border border-[#e2e8f0] rounded-xl overflow-hidden">
+              {[
+                { title: 'Аналіз завершено', desc: 'Ваш звіт для dataflow.io/pricing готовий', time: '2 години тому', unread: true },
+                { title: 'Новий рахунок', desc: 'Рахунок на $149.00 за липень 2026', time: '1 день тому', unread: true },
+                { title: 'Покращення score', desc: 'Ваш AI Visibility Score виріс до 82', time: '3 дні тому', unread: false },
+                { title: 'Щотижневий звіт', desc: 'Підсумок активності за тиждень', time: '1 тиждень тому', unread: false },
+              ].map((notif, i) => (
+                <div
+                  key={i}
+                  className={`p-5 border-b border-[#e2e8f0] last:border-0 ${notif.unread ? 'bg-[#f8fafc]' : 'bg-white'} hover:bg-[#f8fafc] transition-colors`}
+                >
+                  <div className="flex gap-3">
+                    <div className={`w-2 h-2 rounded-full mt-2 shrink-0 ${notif.unread ? 'bg-[#10b981]' : 'bg-transparent'}`} />
+                    <div className="flex-1">
+                      <div className="font-medium text-[#0a1628] mb-1">{notif.title}</div>
+                      <div className="text-sm text-[#64748b] mb-1">{notif.desc}</div>
+                      <div className="text-xs text-[#94a3b8]">{notif.time}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {!['overview', 'reports', 'analytics', 'billing', 'notifications', 'settings'].includes(activeTab) && (
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
               <div className="text-4xl mb-3">🔧</div>
               <h2 className="font-bold text-[#0a1628] mb-1">{navItems.find(n => n.id === activeTab)?.label}</h2>
-              <p className="text-sm text-[#94a3b8]">This section is coming soon.</p>
+              <p className="text-sm text-[#94a3b8]">Цей розділ скоро з'явиться.</p>
             </div>
           </div>
         )}

@@ -1,13 +1,23 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Zap } from 'lucide-react'
-import { NAV_LINKS } from '../../constants'
 import Button from '../ui/Button'
+import LanguageSwitcher from '../ui/LanguageSwitcher'
+import { useLanguage } from '../../context/LanguageContext'
+import { translations } from '../../locales/translations'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { pathname } = useLocation()
+  const { t } = useLanguage()
+
+  const NAV_LINKS = [
+    { label: t(translations.nav.services), href: '/services' },
+    { label: t(translations.nav.pricing), href: '/pricing' },
+    { label: t(translations.nav.caseStudies), href: '/case-studies' },
+    { label: t(translations.nav.about), href: '/about' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -62,15 +72,16 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher isDark={isDark} />
           <Link
             to="/dashboard"
             className={`text-sm font-medium transition-colors ${isDark ? 'text-white/80 hover:text-white' : 'text-[#475569] hover:text-[#0f3460]'}`}
           >
-            Sign in
+            {t(translations.nav.signIn)}
           </Link>
           <Link to="/pricing">
             <Button size="sm" variant={isDark ? 'accent' : 'primary'}>
-              Analyze Website
+              {t(translations.nav.analyzeWebsite)}
             </Button>
           </Link>
         </div>
@@ -103,10 +114,10 @@ export default function Navbar() {
           ))}
           <div className="pt-3 border-t border-[#e2e8f0] flex flex-col gap-2">
             <Link to="/dashboard" className="block px-3 py-2 text-sm font-medium text-[#475569]">
-              Sign in
+              {t(translations.nav.signIn)}
             </Link>
             <Link to="/pricing">
-              <Button size="sm" fullWidth>Analyze Website</Button>
+              <Button size="sm" fullWidth>{t(translations.nav.analyzeWebsite)}</Button>
             </Link>
           </div>
         </div>
