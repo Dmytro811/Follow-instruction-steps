@@ -4,7 +4,7 @@ import Footer from './components/layout/Footer'
 import HomePage from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
 import PricingPage from './pages/PricingPage'
-import CaseStudiesPage from './pages/CaseStudiesPage'
+//import CaseStudiesPage from './pages/CaseStudiesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import FAQPage from './pages/FAQPage'
@@ -29,7 +29,7 @@ export default function App() {
       <Route path="/" element={<Layout><HomePage /></Layout>} />
       <Route path="/services" element={<Layout><ServicesPage /></Layout>} />
       <Route path="/pricing" element={<Layout><PricingPage /></Layout>} />
-      <Route path="/case-studies" element={<Layout><CaseStudiesPage /></Layout>} />
+      {/* <Route path="/case-studies" element={<Layout><CaseStudiesPage /></Layout>} /> */}
       <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
       <Route path="/faq" element={<Layout><FAQPage /></Layout>} />

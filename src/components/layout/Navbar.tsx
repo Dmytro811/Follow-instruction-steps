@@ -15,7 +15,7 @@ export default function Navbar() {
   const NAV_LINKS = [
     { label: t(translations.nav.services), href: '/services' },
     { label: t(translations.nav.pricing), href: '/pricing' },
-    { label: t(translations.nav.caseStudies), href: '/case-studies' },
+   // { label: t(translations.nav.caseStudies), href: '/case-studies' },
     { label: t(translations.nav.about), href: '/about' },
   ]
 

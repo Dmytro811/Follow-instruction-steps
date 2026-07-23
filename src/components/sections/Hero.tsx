@@ -140,9 +140,9 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto w-full">
+        <div className="mt-9 grid grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl mx-auto w-full">
           {[
-            { value: '12,400+', label: 'Websites Analyzed' },
+           // { value: '12,400+', label: 'Websites Analyzed' },
             { value: '7', label: 'AI Models Supported' },
             { value: '94%', label: 'Score Improvement Rate' },
             { value: '3.2×', label: 'Avg. AI Mention Increase' },
@@ -157,7 +157,7 @@ export default function Hero() {
         </div>
 
         {/* Trust logos */}
-        <div className="mt-10 text-center">
+        {/* <div className="mt-10 text-center">
           <p className="text-xs text-white/30 uppercase tracking-widest mb-5">
             Trusted by marketing teams at
           </p>
@@ -168,7 +168,7 @@ export default function Hero() {
               </span>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Scroll cue */}

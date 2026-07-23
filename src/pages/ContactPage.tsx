@@ -1,15 +1,30 @@
 import { useState } from 'react'
-import { Mail, MessageSquare, Clock, CheckCircle } from 'lucide-react'
+import { Mail, MessageSquare, Clock, CheckCircle, AlertCircle } from 'lucide-react'
 import Button from '../components/ui/Button'
 import { Link } from 'react-router-dom'
+import { api } from '../services/api'
+import { formatApiError } from '../utils/validation'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setError('')
+    setIsSubmitting(true)
+
+    try {
+      await api.contact(form)
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Failed to send contact message:', err)
+      setError(formatApiError(err))
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -126,7 +141,16 @@ export default function ContactPage() {
                         placeholder="Tell us about your website and what you're trying to achieve…"
                       />
                     </div>
-                    <Button type="submit" size="lg" fullWidth>Send Message</Button>
+                    {error && (
+                      <div className="flex items-start gap-2 text-red-600 text-sm">
+                        <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                        <span>{error}</span>
+                      </div>
+                    )}
+
+                    <Button type="submit" size="lg" fullWidth disabled={isSubmitting}>
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
                   </form>
                 </>
               )}

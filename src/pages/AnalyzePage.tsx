@@ -15,15 +15,6 @@ export default function AnalyzePage() {
   const [error, setError] = useState('')
   const [isValidating, setIsValidating] = useState(false)
 
-  const validateUrl = (url: string): boolean => {
-    try {
-      const urlObj = new URL(url)
-      return urlObj.protocol === 'http:' || urlObj.protocol === 'https:'
-    } catch {
-      return false
-    }
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
@@ -36,8 +27,8 @@ export default function AnalyzePage() {
     const formattedUrl = normalizeUrl(websiteUrl)
     const validation = validateUrl(formattedUrl)
 
-    if (!validation) {
-      setError('Invalid URL.')
+    if (!validation.valid) {
+      setError(validation.error || 'Invalid URL.')
       return
     }
 

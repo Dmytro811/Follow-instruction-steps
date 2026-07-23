@@ -10,7 +10,7 @@ export default function Footer() {
     [t(translations.footer.product)]: [
       { label: t(translations.nav.services), href: '/services' },
       { label: t(translations.nav.pricing), href: '/pricing' },
-      { label: t(translations.nav.caseStudies), href: '/case-studies' },
+     // { label: t(translations.nav.caseStudies), href: '/case-studies' },
     ],
     [t(translations.footer.company)]: [
       { label: t(translations.nav.about), href: '/about' },

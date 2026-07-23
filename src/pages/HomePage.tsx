@@ -6,8 +6,6 @@ import PricingCards from '../components/sections/PricingCards'
 //import Testimonials from '../components/sections/Testimonials'
 import FAQAccordion from '../components/sections/FAQAccordion'
 import NewsletterCTA from '../components/sections/NewsletterCTA'
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
   return (

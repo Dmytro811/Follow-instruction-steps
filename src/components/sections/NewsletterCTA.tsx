@@ -13,7 +13,7 @@ export default function NewsletterCTA() {
           Stay Ahead of AI Search Changes
         </h2>
         <p className="text-white/60 mb-8">
-          Get weekly insights on AI visibility, GEO strategies, and LLM optimization. Trusted by 8,200+ marketing leaders.
+          Get weekly insights on AI visibility, GEO strategies, and LLM optimization.
         </p>
 
         {submitted ? (

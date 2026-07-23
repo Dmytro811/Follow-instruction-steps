@@ -70,7 +70,7 @@ export const PLANS: AnalysisPlan[] = [
 export const NAV_LINKS = [
   { label: 'Services', href: '/services' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Case Studies', href: '/case-studies' },
+  //{ label: 'Case Studies', href: '/case-studies' },
   { label: 'About', href: '/about' },
 ]
 

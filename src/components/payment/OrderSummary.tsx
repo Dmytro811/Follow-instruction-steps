@@ -10,8 +10,10 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({ plan, websiteUrl }: OrderSummaryProps) {
-  const vat = plan.price * 0.2
-  const total = plan.price + vat
+  // Note: this must always equal what's actually charged via Stripe
+  // (see PaymentPage.tsx, amountInCents = plan.price * 100). If you
+  // introduce tax later, add it here AND to the Payment Intent amount.
+  const total = plan.price
 
   return (
     <div className="lg:col-span-1">
@@ -75,13 +77,6 @@ export default function OrderSummary({ plan, websiteUrl }: OrderSummaryProps) {
             <span className="text-[#64748b]">Subtotal</span>
             <span className="font-medium text-[#0a1628]">
               ${plan.price}
-            </span>
-          </div>
-
-          <div className="flex justify-between">
-            <span className="text-[#64748b]">VAT (20%)</span>
-            <span className="font-medium text-[#0a1628]">
-              ${vat.toFixed(2)}
             </span>
           </div>
 
