@@ -99,9 +99,9 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-[#0a1628] text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
             The Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
             {team.map(member => (
-              <div key={member.name} className="flex flex-col items-center text-center p-6 border border-[#e2e8f0] rounded-xl bg-white hover:shadow-lg transition-shadow">
+              <div key={member.name} className="flex flex-col items-center text-center p-6 border border-[#e2e8f0] rounded-xl bg-white hover:shadow-lg transition-shadow w-full sm:w-80">
                 {member.photo ? (
                   <img
                     src={member.photo}

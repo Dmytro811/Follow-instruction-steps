@@ -7,13 +7,17 @@ import {
 } from '@stripe/react-stripe-js'
 import { Lock } from 'lucide-react'
 import Button from '../ui/Button'
+import { api } from '../../services/api'
 
 interface CheckoutFormProps {
   amount: string
   planName: string
+  paymentIntentId: string
+  websiteUrl: string
+  planId: string
 }
 
-export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
+export default function CheckoutForm({ amount, planName, paymentIntentId, websiteUrl, planId }: CheckoutFormProps) {
   const stripe = useStripe()
   const elements = useElements()
   const navigate = useNavigate()
@@ -32,18 +36,6 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
     setIsProcessing(true)
     setMessage('')
 
-    // TODO: Відправте email та planName на ваш n8n webhook перед підтвердженням платежу
-    // Це дозволить зберегти інформацію про замовлення
-    try {
-      // await fetch('YOUR_N8N_WEBHOOK_URL/save-order', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email, plan: planName, amount }),
-      // })
-    } catch (err) {
-      console.error('Order save error:', err)
-    }
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -58,9 +50,9 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
       } else {
         setMessage('Несподівана помилка. Спробуйте ще раз.')
       }
+      setIsProcessing(false)
     }
-
-    setIsProcessing(false)
+    // Якщо успіх, Stripe автоматично редіректить на return_url
   }
 
   return (
@@ -68,7 +60,7 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
       {/* Email */}
       <div className="mb-6">
         <label htmlFor="email" className="block text-sm font-medium text-[#0a1628] mb-2">
-          Email для чеку
+          Email для чеку та сповіщень
         </label>
         <input
           type="email"
@@ -76,9 +68,12 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full px-4 py-3 border border-[#e2e8f0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e8f0fb]"
+          className="w-full px-4 py-3 border border-[#e2e8f0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e8f0fb] focus:border-[#0f3460] transition-all"
           placeholder="your@email.com"
         />
+        <p className="text-xs text-[#94a3b8] mt-2">
+          Ми надішлемо чек та посилання на звіт на цю адресу
+        </p>
       </div>
 
       {/* Stripe Payment Element */}
@@ -101,7 +96,10 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
         disabled={isProcessing || !stripe || !elements || !email}
       >
         {isProcessing ? (
-          <span>Обробка платежу...</span>
+          <span className="flex items-center justify-center gap-2">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+            Обробка платежу...
+          </span>
         ) : (
           <span className="flex items-center justify-center gap-2">
             <Lock size={16} />
@@ -111,7 +109,7 @@ export default function CheckoutForm({ amount, planName }: CheckoutFormProps) {
       </Button>
 
       <p className="text-xs text-[#64748b] text-center mt-4">
-        Платіж обробляється через захищений сервіс Stripe
+        Платіж обробляється через захищений сервіс Stripe. Аналіз розпочнеться автоматично після успішної оплати.
       </p>
     </form>
   )

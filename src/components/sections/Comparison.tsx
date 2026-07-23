@@ -1,11 +1,11 @@
 import { Check, X, ArrowRight } from 'lucide-react'
 
 const rows = [
-  { label: 'Optimizes for Google rankings', traditional: true, geo: false },
+  { label: 'Optimizes for Google rankings', traditional: true, geo: true },
   { label: 'Optimizes for AI recommendations', traditional: false, geo: true },
-  { label: 'Keyword-based approach', traditional: true, geo: false },
+  { label: 'Keyword-based approach', traditional: true, geo: true },
   { label: 'Entity & semantic understanding', traditional: false, geo: true },
-  { label: 'Backlink-focused authority', traditional: true, geo: false },
+  { label: 'Backlink-focused authority', traditional: true, geo: true },
   { label: 'Trust signals for AI models', traditional: false, geo: true },
   { label: 'Schema markup for search crawlers', traditional: true, geo: true },
   { label: 'AI readability scoring', traditional: false, geo: true },

@@ -8,8 +8,10 @@ import CaseStudiesPage from './pages/CaseStudiesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import FAQPage from './pages/FAQPage'
+import AnalyzePage from './pages/AnalyzePage'
 import PaymentPage from './pages/PaymentPage'
 import PaymentSuccessPage from './pages/PaymentSuccessPage'
+import DashboardPage from './pages/DashboardPage'
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,8 +33,10 @@ export default function App() {
       <Route path="/about" element={<Layout><AboutPage /></Layout>} />
       <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
       <Route path="/faq" element={<Layout><FAQPage /></Layout>} />
+      <Route path="/analyze" element={<Layout><AnalyzePage /></Layout>} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/payment-success" element={<PaymentSuccessPage />} />
+      <Route path="/dashboard" element={<Layout><DashboardPage /></Layout>} />
     </Routes>
   )
 }

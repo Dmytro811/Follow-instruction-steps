@@ -16,8 +16,8 @@ export default function LanguageSwitcher({ isDark = false }: LanguageSwitcherPro
       }`}
       aria-label="Switch language"
     >
-      <Globe size={16} />
-      <span>{language === 'uk' ? 'УКР' : 'EN'}</span>
+      {/* <Globe size={16} />
+      <span>{language === 'uk' ? 'УКР' : 'EN'}</span> */}
     </button>
   )
 }

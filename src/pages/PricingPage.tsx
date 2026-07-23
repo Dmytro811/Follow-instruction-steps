@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Check, X } from 'lucide-react'
 import { PLANS } from '../constants'
 import Button from '../components/ui/Button'
@@ -29,7 +30,12 @@ function Cell({ value }: { value: boolean | string }) {
 }
 
 export default function PricingPage() {
+  const navigate = useNavigate()
   const [selected, setSelected] = useState<string | null>(null)
+
+  const handleGetStarted = (planId: string) => {
+    navigate('/analyze', { state: { selectedPlanId: planId } })
+  }
 
   return (
     <div className="pt-16">
@@ -89,7 +95,12 @@ export default function PricingPage() {
                     </ul>
                   </div>
                   <div className="p-8 pt-0">
-                    <Button variant={isHighlighted ? 'accent' : 'primary'} fullWidth size="lg">
+                    <Button
+                      variant={isHighlighted ? 'accent' : 'primary'}
+                      fullWidth
+                      size="lg"
+                      onClick={() => handleGetStarted(plan.id)}
+                    >
                       Get Started — ${plan.price}
                     </Button>
                     <p className={`text-center text-xs mt-3 ${isHighlighted ? 'text-white/40' : 'text-[#94a3b8]'}`}>

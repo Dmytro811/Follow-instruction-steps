@@ -3,7 +3,7 @@ import Benefits from '../components/sections/Benefits'
 import AIWorkflow from '../components/sections/AIWorkflow'
 import Comparison from '../components/sections/Comparison'
 import PricingCards from '../components/sections/PricingCards'
-import Testimonials from '../components/sections/Testimonials'
+//import Testimonials from '../components/sections/Testimonials'
 import FAQAccordion from '../components/sections/FAQAccordion'
 import NewsletterCTA from '../components/sections/NewsletterCTA'
 import { Link } from 'react-router-dom'
@@ -18,7 +18,7 @@ export default function HomePage() {
       <Comparison />
 
       {/* Case study teaser */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
             <div>
@@ -62,7 +62,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Pricing preview */}
       <section className="py-24 bg-[#f8fafc]">
@@ -77,7 +77,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Testimonials />
+      {/*<Testimonials />*/}
 
       {/* FAQ section */}
       <section className="py-24 bg-[#f8fafc]">
